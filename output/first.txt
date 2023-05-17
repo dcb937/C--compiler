@@ -1,0 +1,68 @@
+assignExpAtom	= 
+eqExpAtom	== != 
+relExpAtom	< > <= >= 
+relExp	+ - ! Ident ( INT 
+addExp	+ - ! Ident ( INT 
+mulExpAtom	* / % 
+mulExp	+ - ! Ident ( INT 
+argFunctionR	, 
+funcRParams	+ - ! Ident ( INT 
+callFunc	( 
+lVal	Ident 
+unaryExp	+ - ! Ident ( INT 
+number	INT 
+exp	+ - ! Ident ( INT 
+argExp	+ - ! Ident ( INT 
+stmt	; { return + - ! Ident ( INT 
+blockItem	const ; { return int + - ! Ident ( INT 
+block	{ 
+funcFParam	int 
+funcType	void 
+funcDef	void 
+initVal	+ - ! Ident ( INT 
+assignExp	+ - ! Ident ( INT 
+!	! 
+constDef	Ident 
+-	- 
+int	int 
+eqExp	+ - ! Ident ( INT 
+argFunctionF	, 
++	+ 
+return	return 
+)	) 
+funcRParam	+ - ! Ident ( INT 
+INT	INT 
+primaryExp	( INT 
+constDecl	const 
+(	( 
+;	; 
+const	const 
+<	< 
+unaryOp	+ - ! 
+funcFParams	int 
+{	{ 
+varDecl	int 
+,	, 
+bType	int 
+}	} 
+!=	!= 
+constExp	+ - ! Ident ( INT 
+*	* 
+=	= 
+/	/ 
+<=	<= 
+argVarDecl	, 
+>	> 
+argVarDef	= 
+addExpAtom	+ - 
+>=	>= 
+Ident	Ident 
+==	== 
+void	void 
+program	const void int 
+compUnit	const void int 
+constInitVal	+ - ! Ident ( INT 
+decl	const int 
+%	% 
+argConst	, 
+varDef	Ident 

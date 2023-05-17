@@ -1,0 +1,57 @@
+int	<KW>
+a	<IDN> 
+=	<OP >
+3	<INT>
+;	<SE>
+int	<KW>
+b	<IDN> 
+=	<OP >
+1	<INT>
+;	<SE>
+int	<KW>
+c	<IDN> 
+=	<OP >
+3	<INT>
+;	<SE>
+int	<KW>
+e	<IDN> 
+=	<OP >
+0	<INT>
+,	<SE>
+f	<IDN> 
+=	<OP >
+10	<INT>
+;	<SE>
+void	<KW>
+func	<IDN> 
+(	<SE>
+)	<SE>
+{	<SE>
+int	<KW>
+a	<IDN> 
+=	<OP >
+5	<INT>
+;	<SE>
+int	<KW>
+c	<IDN> 
+=	<OP >
+2	<INT>
+;	<SE>
+int	<KW>
+temp2	<IDN> 
+=	<OP >
+f	<IDN> 
++	<OP >
+2	<INT>
+;	<SE>
+int	<KW>
+temp3	<IDN> 
+=	<OP >
+c	<IDN> 
+;	<SE>
+return	<KW>
+a	<IDN> 
++	<OP >
+b	<IDN> 
+;	<SE>
+}	<SE>

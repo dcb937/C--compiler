@@ -28,11 +28,12 @@ void LexicalAnaly::performLexicalAnalysis()
         std::cerr << "无法打开文件 "
                   << "output/IntermediateResults.txt" << std::endl;
         exit(-1);
-    }                                                                                                                                                                                                              // 打开输出文件
+    }
     unordered_map<string, TokenType> keywords = {{"int", KW}, {"void", KW}, {"return", KW}, {"const", KW}};                                                                                                        // 关键字表
     unordered_map<string, TokenType> operators = {{"+", OP}, {"-", OP}, {"*", OP}, {"/", OP}, {"%", OP}, {"=", OP}, {">", OP}, {"<", OP}, {"==", OP}, {">=", OP}, {"<=", OP}, {"!=", OP}, {"&&", OP}, {"||", OP}}; // 运算符表
     unordered_map<string, TokenType> separators = {{"(", SE}, {")", SE}, {"{", SE}, {"}", SE}, {";", SE}, {",", SE}};                                                                                              // 界符表
-    unordered_map<string, Symbol> symbolTable;                                                                                                                                                                     // 符号表
+    unordered_map<string, TokenType> opse = {{"+", OP}, {"-", OP}, {"*", OP}, {"/", OP}, {"%", OP}, {"=", OP}, {">", OP}, {"<", OP}, {"==", OP}, {">=", OP}, {"<=", OP}, {"!=", OP}, {"&&", OP}, {"||", OP}, {"(", SE}, {")", SE}, {"{", SE}, {"}", SE}, {";", SE}, {",", SE}};
+    unordered_map<string, Symbol> symbolTable; // 符号表
     string line;
     int lineNum = 1;
     while (getline(input, line)) {
@@ -56,6 +57,7 @@ void LexicalAnaly::performLexicalAnalysis()
                     output << idn << "\t<" << type[DFA[currentState].type] << ">\n";
                     output2 << idn << "\n";
                     lex_result_stack.push_back(idn);
+                    // cout<<idn<<endl;
                 } else {                          // 否则是标识符
                     if (symbolTable.count(idn)) { // 如果已经在符号表中
                         currentState = 0;
@@ -75,12 +77,25 @@ void LexicalAnaly::performLexicalAnalysis()
                         lex_result_stack.push_back("Ident");
                     }
                 }
-            } else if (isdigit(line[i]) || line[i] == '-') { // 处理整数
-
+            } else if (isdigit(line[i]) || line[i] == '-') { // 处理整数或未知字符
+                string abc;
                 bool isNegative = line[i] == '-';
-                while (i + 1 < line.length() && isdigit(line[i + 1])) {
+                int a = i;
+                while (i + 1 < line.length() && isdigit(line[a + 1]) && a < line.length()) {
                     i++;
                     idn += line[i];
+                    abc = line[i + 1];
+                    if (operators.count(abc) || separators.count(abc) || line[i + 1] == ' ') {
+                        a = line.length();
+                    }
+                    // cout<<a<<"/t"<<idn<<endl;
+                }
+                bool has_alpha_or_underscore = false;
+                for (int j = a + 1; j < line.length(); j++) {
+                    if (isalpha(line[j]) || line[j] == '_') {
+                        has_alpha_or_underscore = true;
+                        break;
+                    }
                 }
                 if (isNegative && !isdigit(line[i + 1])) { // 如果是减号运算符
                     // ch=2;
@@ -88,8 +103,28 @@ void LexicalAnaly::performLexicalAnalysis()
                     currentState = DFA[0].transitions[2];
                     output << idn << "\t<" << type[currentState] << ">\n";
                     output2 << idn << "\n";
-                    lex_result_stack.push_back(idn);
+                    lex_result_stack.push_back("Ident");
                     // output <<  << "\t<OP>\n";
+                } else if (isNegative && isdigit(line[a + 1]) && has_alpha_or_underscore) { // 如果是未知字符
+                    // ch=2;
+                    currentState = 0;
+                    currentState = DFA[0].transitions[6];
+                    output << idn << "\t<" << type[currentState] << ">\n";
+                    output2 << "UNK"
+                            << "\n";
+                    lex_result_stack.push_back("UNK");
+                    // output <<  << "\t<OP>\n";
+
+                } else if (!isNegative && has_alpha_or_underscore && isdigit(a)) { // 如果是未知字符
+                    // ch=2;
+                    currentState = 0;
+                    currentState = DFA[0].transitions[6];
+                    output << idn << "\t<" << type[currentState] << ">\n";
+                    output2 << "UNK"
+                            << "\n";
+                    lex_result_stack.push_back("UNK");
+                    // output <<  << "\t<OP>\n";
+
                 } else { // 否则是整数
                     // ch=1;
                     currentState = 0;
@@ -100,6 +135,7 @@ void LexicalAnaly::performLexicalAnalysis()
                     lex_result_stack.push_back("INT");
                     // output << num << "\t<INT>\n";
                 }
+
             } else { // 处理运算符和界符
 
                 if (i + 1 < line.length() && operators.count(idn + line[i + 1])) {
@@ -110,7 +146,7 @@ void LexicalAnaly::performLexicalAnalysis()
                     // ch=2;
                     currentState = 0;
                     currentState = DFA[currentState].transitions[2];
-                    output << idn << "\t<" << type[currentState] << " >\n";
+                    output << idn << "\t<" << type[currentState] << ">\n";
                     output2 << idn << "\n";
                     lex_result_stack.push_back(idn);
                     // output << op << "\t<OP>\n";
@@ -124,6 +160,9 @@ void LexicalAnaly::performLexicalAnalysis()
                     // output << op << "\t<SE>\n";
                 } else { // 否则是未知字符
                     output << idn << "\t<UNK>\n";
+                    output2 << "UNK"
+                            << "\n";
+                    lex_result_stack.push_back("UNK");
                 }
             }
             colNum++;
@@ -137,9 +176,9 @@ void LexicalAnaly::performLexicalAnalysis()
         output << iter->first << "\t<" << iter->second.type << ", " << iter->second.line << ", " << iter->second.column << ">\n";
     }
     */
-    input.close();  // 关闭输入文件
-    output.close(); // 关闭输出文件
-    output2.close();
+    input.close();   // 关闭输入文件
+    output.close();  // 关闭输出文件
+    output2.close(); // 关闭输出文件
 }
 
 void LexicalAnaly::initializeDFA()
@@ -151,6 +190,8 @@ void LexicalAnaly::initializeDFA()
     DFA[0].transitions[3] = 3;
     DFA[0].transitions[4] = 4;
     DFA[0].transitions[5] = 5;
+    DFA[0].transitions[6] = 6;
+    //初始状态
     DFA[0].type = TokenType::START;
 
     // 状态 1，整数
@@ -163,6 +204,8 @@ void LexicalAnaly::initializeDFA()
     DFA[4].type = TokenType::KW;
     // 状态 5，标识符
     DFA[5].type = TokenType::IDN;
+    // 状态 6，位置字符
+    DFA[6].type = TokenType::UNK;
 }
 
 vector<string> LexicalAnaly::getLex_result_stack()

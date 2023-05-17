@@ -1,25 +1,25 @@
 int	<KW>
 a	<IDN> 
-=	<OP >
+=	<OP>
 3	<INT>
 ;	<SE>
 int	<KW>
 b	<IDN> 
-=	<OP >
+=	<OP>
 1	<INT>
 ;	<SE>
 int	<KW>
 c	<IDN> 
-=	<OP >
+=	<OP>
 3	<INT>
 ;	<SE>
 int	<KW>
 e	<IDN> 
-=	<OP >
+=	<OP>
 0	<INT>
 ,	<SE>
 f	<IDN> 
-=	<OP >
+=	<OP>
 10	<INT>
 ;	<SE>
 void	<KW>
@@ -29,29 +29,29 @@ func	<IDN>
 {	<SE>
 int	<KW>
 a	<IDN> 
-=	<OP >
+=	<OP>
 5	<INT>
 ;	<SE>
 int	<KW>
 c	<IDN> 
-=	<OP >
+=	<OP>
 2	<INT>
 ;	<SE>
 int	<KW>
 temp2	<IDN> 
-=	<OP >
+=	<OP>
 f	<IDN> 
-+	<OP >
++	<OP>
 2	<INT>
 ;	<SE>
 int	<KW>
 temp3	<IDN> 
-=	<OP >
+=	<OP>
 c	<IDN> 
 ;	<SE>
 return	<KW>
 a	<IDN> 
-+	<OP >
++	<OP>
 b	<IDN> 
 ;	<SE>
 }	<SE>

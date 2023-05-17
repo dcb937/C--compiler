@@ -9,19 +9,23 @@
 #include <vector>
 
 // 定义词法单元的类型
+
 enum TokenType {
     START, //初始态
     INT,   // 整数
     OP,    // 运算符
     SE,    // 界符
     KW,    // 关键字
-    IDN    // 标识符
+    IDN,   // 标识符
+    UNK    //未知字符
 
 };
 // 定义状态结构体
 struct State {
-    std::unordered_map<int, int> transitions; // 状态转移表
-    TokenType type;                           // 状态对应的词法单元类型
+    // std::string name;
+    std::unordered_map<int, int> transitions;
+    // unordered_map<int, int> transitions;  // 状态转移表
+    TokenType type; // 状态对应的词法单元类型
 };
 // 定义符号表的结构体
 struct Symbol {
@@ -33,13 +37,14 @@ struct Symbol {
 class LexicalAnaly
 {
 public:
-    const std::string type[6] = {
+    const std::string type[7] = {
         "START", //初始态
         "INT",   // 整数
         "OP",    // 运算符
         "SE",    // 界符
         "KW",    // 关键字
-        "IDN"    // 标识符
+        "IDN",   // 标识符
+        "UNK"    //未知字符
     };
 
     LexicalAnaly();
@@ -50,7 +55,7 @@ public:
 
 private:
     std::vector<std::string> lex_result_stack;
-    State DFA[6]; // DFA 状态数组
+    State DFA[7]; // DFA 状态数组
     void initializeDFA();
 };
 

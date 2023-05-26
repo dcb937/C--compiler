@@ -1,6 +1,6 @@
 # 编译器设置
-CXX := E:\CodeBlocks\MinGW\bin\g++.exe
-CXXFLAGS := -g -m64
+CXX := g++
+CXXFLAGS := -g -m64 -std=c++11
 
 # 源文件目录
 SRCDIR := src

@@ -1,43 +1,40 @@
-constExp	, ; # 
-assignExpAtom	, ; ) # 
-assignExp	, ; ) # 
-eqExpAtom	= , ; ) # 
-relExpAtom	== != = , ; ) # 
-relExp	== != = , ; ) # 
-stmt	const ; { return int + - ! Ident ( INT } # 
-lVal	# 
-funcType	Ident # 
-argVarDef	, ; # 
-bType	Ident # 
-blockItem	} # 
-addExp	< > <= >= == != = , ; ) # 
-funcDef	const void int # 
-funcFParam	, ) # 
-initVal	, ; # 
-argFunctionR	) # 
-argVarDecl	; # 
-constDef	, ; # 
-block	const void int ; { return + - ! Ident ( INT } # 
+mulExpAtom	+ - < > <= >= == != = , ; ) # 
 mulExp	+ - < > <= >= == != = , ; ) # 
-compUnit	# 
-program	# 
-constInitVal	, ; # 
-decl	const void int ; { return + - ! Ident ( INT } # 
-varDef	, ; # 
-argConst	; # 
-eqExp	= , ; ) # 
-argFunctionF	) # 
-argExp	; # 
-constDecl	const void int ; { return + - ! Ident ( INT } # 
-primaryExp	* / % + - < > <= >= == != = , ; ) # 
-exp	, ; ) # 
-unaryExp	* / % + - < > <= >= == != = , ; ) # 
+addExpAtom	< > <= >= == != = , ; ) # 
+relExp	== != = , ; ) # 
 number	* / % + - < > <= >= == != = , ; ) # 
-funcFParams	) # 
-varDecl	const void int ; { return + - ! Ident ( INT } # 
-unaryOp	+ - ! Ident ( INT # 
-callFunc	* / % + - < > <= >= == != = , ; ) # 
+eqExpAtom	= , ; ) # 
+assignExpAtom	, ; ) # 
+addExp	< > <= >= == != = , ; ) # 
+assignExp	, ; ) # 
+exp	, ; ) # 
+argFunctionR	) # 
 funcRParams	) # 
 funcRParam	, ) # 
-mulExpAtom	+ - < > <= >= == != = , ; ) # 
-addExpAtom	< > <= >= == != = , ; ) # 
+varDecl	const void int ; { return INT IDN } # 
+argVarDecl	; # 
+argVarDef	, ; # 
+constInitVal	, ; # 
+compUnit	# 
+argConst	; # 
+unaryExp	* / % + - < > <= >= == != = , ; ) # 
+bType	IDN # 
+constDef	, ; # 
+constExp	, ; # 
+argExp	; # 
+varDef	, ; # 
+decl	const void int ; { return INT IDN } # 
+program	# 
+initVal	, ; # 
+funcDef	const void int # 
+eqExp	= , ; ) # 
+funcType	IDN # 
+funcFParams	) # 
+funcFParam	, ) # 
+argFunctionF	) # 
+callFunc	* / % + - < > <= >= == != = , ; ) # 
+constDecl	const void int ; { return INT IDN } # 
+block	const void int ; { return INT IDN } # 
+relExpAtom	== != = , ; ) # 
+blockItem	} # 
+stmt	const ; { return int INT IDN } # 

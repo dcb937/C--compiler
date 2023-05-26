@@ -1,64 +1,64 @@
-unaryExp	INT IDN 
+mulExpAtom	* / % 
 mulExp	INT IDN 
-addExpAtom	+ - 
 addExp	INT IDN 
+relExpAtom	< > <= >= 
 relExp	INT IDN 
-eqExp	INT IDN 
+eqExpAtom	== != 
 assignExpAtom	= 
+assignExp	INT IDN 
+unaryExp	INT IDN 
+number	INT 
 exp	INT IDN 
 argExp	INT IDN 
-callFunc	( 
-argConst	, 
-IDN	IDN 
-mulExpAtom	* / % 
-==	== 
-/	/ 
-funcDef	void 
--	- 
-funcRParam	INT IDN 
-}	} 
-number	INT 
-assignExp	INT IDN 
-constExp	INT IDN 
-const	const 
-program	const void int 
-funcFParams	int 
-relExpAtom	< > <= >= 
-argVarDef	= 
-,	, 
-%	% 
-<=	<= 
-INT	INT 
-*	* 
-;	; 
-=	= 
-int	int 
-<	< 
-(	( 
-eqExpAtom	== != 
->	> 
-bType	int 
-compUnit	const void int 
-{	{ 
-decl	const int 
-!=	!= 
-constDecl	const 
-)	) 
-constDef	IDN 
->=	>= 
-constInitVal	INT IDN 
-return	return 
-varDecl	int 
-stmt	; { return INT IDN 
-block	{ 
-argVarDecl	, 
-funcRParams	INT IDN 
-varDef	IDN 
 argFunctionR	, 
-initVal	INT IDN 
-void	void 
-funcType	void 
-+	+ 
-argFunctionF	, 
-funcFParam	int 
+funcRParams	INT IDN 
+callFunc	( 
+stmt	; { return INT IDN 
 blockItem	const ; { return int INT IDN 
+block	{ 
+funcFParam	int 
+funcType	void 
+funcDef	void 
+initVal	INT IDN 
+!=	!= 
+bType	int 
+}	} 
+<	< 
+const	const 
+==	== 
+)	) 
+funcRParam	INT IDN 
+INT	INT 
+,	, 
+funcFParams	int 
+varDecl	int 
+{	{ 
+;	; 
+IDN	IDN 
+argVarDef	= 
+int	int 
+eqExp	INT IDN 
+argFunctionF	, 
+return	return 
++	+ 
+(	( 
+constDecl	const 
+*	* 
+=	= 
+constExp	INT IDN 
+<=	<= 
+/	/ 
+addExpAtom	+ - 
+>=	>= 
+-	- 
+void	void 
+program	const void int 
+compUnit	const void int 
+%	% 
+argConst	, 
+constDef	IDN 
+decl	const int 
+constInitVal	INT IDN 
+>	> 
+argVarDecl	, 
+varDef	IDN 

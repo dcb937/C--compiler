@@ -29,7 +29,7 @@ C--compiler
       |- nonterminal.txt          非终结符
       |- terminal.txt             终结符
       |- predict.txt              预测表
-      |- output02.txt             词法分析结果
+      |- lex.txt             词法分析结果
       |- IntermediateResults.txt  语法分析输入
       |- gra.txt                  语法分析结果
 ```
